@@ -21,8 +21,8 @@ class OtomotoCarsSpider(scrapy.Spider):
                 "price": car.css('span.offer-price__number::text').get(default=" ").split("/n")[0],
                 "currency": car.css('span.offer-price__currency::text').get(default=" "),
                 "price_details": car.css('span.offer-price__details::text').get(default=" "),
-                "city": car.css('span.offer-item__location h4::text').get(default=" ").split("/n")[0],
-                "region": car.css('span.offer-item__location h4 em::text').get(default=" ")
+                "city": car.css('.ds-location-city::text').get(default=' '),
+                "region": car.css('.ds-location-region::text').get(default=' '),
             }
 
         next_page = response.css('li.next.abs a::attr(href)').get()
