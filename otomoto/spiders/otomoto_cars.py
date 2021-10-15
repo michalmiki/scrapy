@@ -3,8 +3,7 @@ import scrapy
 
 
 class OtomotoCarsSpider(scrapy.Spider):
-    name = 'my_parser'
-    # allowed_domains = ['(https://www.otomoto.pl/osobowe/)']
+    name = 'friendly_parser'
     start_urls = ['https://www.otomoto.pl/osobowe/?search%5Bnew_used%5D=on']
 
     def parse(self, response):
