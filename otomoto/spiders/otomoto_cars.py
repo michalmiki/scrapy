@@ -12,15 +12,15 @@ class OtomotoCarsSpider(scrapy.Spider):
         for car in response.css('div.offer-item__content'):
 
             yield {
-                'title': car.css('.offer-title__link::text').get(default=" "),
-                "subtitle": car.css('.offer-item__subtitle::text').get(default=" "),
-                "year": car.css("ul.offer-item__params").xpath('li[@data-code="year"]/span/text()').get(default=" "),
-                "mileage":  car.css("ul.offer-item__params").xpath('li[@data-code="mileage"]/span/text()').get(default=" "),
-                "capacity": car.css("ul.offer-item__params").xpath('li[@data-code="engine_capacity"]/span/text()').get(default=" "),
-                "fuel": car.css("ul.offer-item__params").xpath('li[@data-code="fuel_type"]/span/text()').get(default=" "),
-                "price": car.css('span.offer-price__number::text').get(default=" ").split("/n")[0],
-                "currency": car.css('span.offer-price__currency::text').get(default=" "),
-                "price_details": car.css('span.offer-price__details::text').get(default=" "),
+                'title': car.css('.offer-title__link::text').get(default=" ").strip(),
+                "subtitle": car.css('.offer-item__subtitle::text').get(default=" ").strip(),
+                "year": car.css('.ds-param[data-code="year"]').css('span::text').get(default=" ").strip(),
+                "mileage":  car.css('.ds-param[data-code="mileage"]').css('span::text').get(default=" ").strip,
+                "capacity": car.css('.ds-param[data-code="engine_capacity"]').css('span::text').get(default=" ").strip(),
+                "fuel_type": car.css('.ds-param[data-code="fuel_type"]').css('span::text').get(default=" ").strip(),
+                "price": car.css('.offer-price__number.ds-price-number').xpath('span/text()').get(default=" ").strip(),
+                "currency": car.css('.offer-price__currency.ds-price-currency::text').get(default=" ").strip(),
+                "price_details": car.css('.offer-price__details.ds-price-complement::text').get().strip(),
                 "city": car.css('.ds-location-city::text').get(default=' '),
                 "region": car.css('.ds-location-region::text').get(default=' '),
             }
