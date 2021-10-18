@@ -20,7 +20,7 @@ NEWSPIDER_MODULE = 'otomoto.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = 'otomoto (+http://www.yourdomain.com)'
+USER_AGENT = 'CarsPricer (+http://www.carspricer.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
